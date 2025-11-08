@@ -4,38 +4,38 @@ import { ArrowRight, Coins, Lock, Shield, Calendar, Send } from 'lucide-react';
 const tools = [
   {
     name: 'Token Creation',
-    description: 'Create custom tokens on Plasma Mainnet Beta',
+    description: 'Create custom tokens on Monad Mainnet Beta',
     href: '/tools/create-token',
     icon: Coins,
-    color: 'bg-[#00FF85]',
+    color: 'bg-[#200053]',
   },
   {
     name: 'Token Locker',
     description: 'Lock your tokens with custom vesting schedules',
     href: '/tools/token-locker',
     icon: Lock,
-    color: 'bg-[#00FF85]',
+    color: 'bg-[#200053]',
   },
   {
     name: 'Liquidity Locker',
     description: 'Secure your LP tokens with time-based locks',
     href: '/tools/liquidity-locker',
     icon: Shield,
-    color: 'bg-[#00FF85]',
+    color: 'bg-[#200053]',
   },
   {
     name: 'Token Vesting',
     description: 'Create and manage token vesting schedules',
     href: '/tools/vesting',
     icon: Calendar,
-    color: 'bg-[#00FF85]',
+    color: 'bg-[#200053]',
   },
   {
     name: 'Multi-Send',
     description: 'Send tokens to multiple addresses efficiently',
     href: '/tools/multi-send',
     icon: Send,
-    color: 'bg-[#00FF85]',
+    color: 'bg-[#200053]',
   },
 ];
 
@@ -46,10 +46,10 @@ export default function HomePage() {
         {/* Hero Section */}
         <div className="text-center mb-16 flex flex-col items-center justify-center min-h-[60vh]">
           <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
-            Plasmatic Tools
+            Nadz Tools
           </h1>
           <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
-            Tools for token creation, locking, vesting, and more on Plasma Mainnet Beta.
+            Tools for token creation, locking, vesting, and more on Monad Mainnet Beta.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
@@ -60,7 +60,7 @@ export default function HomePage() {
               <ArrowRight className="ml-2 h-5 w-5" />
             </Link>
             <a
-              href="https://docs.plasmatic.tools"
+              href="https://docs.nadz.tools"
               target="_blank"
               rel="noopener noreferrer"
               className="btn-secondary text-lg px-8 py-3 inline-flex items-center justify-center"
@@ -85,7 +85,7 @@ export default function HomePage() {
                 <div className={`w-12 h-12 ${tool.color} rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform`}>
                   <tool.icon className="h-6 w-6 text-white" />
                 </div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-2 group-hover:text-[#00FF85] transition-colors">
+                <h3 className="text-xl font-semibold text-gray-900 mb-2 group-hover:text-[#200053] transition-colors">
                   {tool.name}
                 </h3>
                 <p className="text-gray-600 group-hover:text-gray-700 transition-colors">

@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 :root {
-  --primary: #00FF85;
+  --primary: #200053;
   --primary-foreground: #000000;
   --background: #ffffff;
   --foreground: #000000;
@@ -11,7 +11,7 @@
   --muted-foreground: #6b7280;
   --border: #e5e7eb;
   --input: #ffffff;
-  --ring: #00FF85;
+  --ring: #200053;
 }
 
 * {
@@ -36,11 +36,11 @@ body {
 
 @layer components {
   .btn-primary {
-    @apply bg-[#00FF85] hover:bg-[#00E677] text-black font-bold px-5 py-3 rounded-lg transition-colors shadow-lg border-2 border-[#00E677] text-lg;
+    @apply bg-[#200053] hover:bg-[#180042] text-white font-bold px-5 py-3 rounded-lg transition-colors shadow-lg border-2 border-[#180042] text-lg;
   }
   
   .btn-primary:disabled {
-    @apply bg-[#9AF5BF] text-black cursor-not-allowed shadow-md border-[#78E9B0] opacity-100;
+    @apply bg-[#3d1a6b] text-white cursor-not-allowed shadow-md border-[#2d1250] opacity-100;
   }
   
   .btn-secondary {
@@ -56,6 +56,6 @@ body {
   }
   
   .input {
-    @apply w-full h-12 px-4 rounded-md bg-gray-100 text-black border-2 border-gray-300 focus:border-[#00FF85] focus:outline-none focus:ring-2 focus:ring-[#00FF85] transition-colors hover:border-gray-400;
+    @apply w-full h-12 px-4 rounded-md bg-gray-100 text-black border-2 border-gray-300 focus:border-[#200053] focus:outline-none focus:ring-2 focus:ring-[#200053] transition-colors hover:border-gray-400;
   }
 }

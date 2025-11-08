@@ -1,16 +1,16 @@
-# Plasmatic Tools
+# Nadz Tools
 
-A production-ready Web3 Web App built for Plasma Mainnet Beta, providing essential tools for token creation, locking, vesting, and multi-send functionality.
+A production-ready Web3 Web App built for Monad Mainnet Beta, providing essential tools for token creation, locking, vesting, and multi-send functionality.
 
 ## Features
 
-- **Token Creation**: Deploy custom ERC-20 tokens on Plasma Mainnet Beta
+- **Token Creation**: Deploy custom ERC-20 tokens on Monad Mainnet Beta
 - **Token Locker**: Lock tokens with custom vesting schedules and cliff periods
 - **Liquidity Locker**: Secure LP tokens with time-based locks
 - **Token Vesting**: Create and manage token vesting schedules
 - **Multi-Send**: Send tokens to multiple addresses efficiently
 - **Wallet Integration**: RainbowKit for seamless wallet connection
-- **Network Management**: Automatic network switching to Plasma Mainnet Beta
+- **Network Management**: Automatic network switching to Monad Mainnet Beta
 - **Responsive Design**: Clean, modern UI optimized for all devices
 
 ## Tech Stack
@@ -71,8 +71,8 @@ npm run dev
 
 All environment variables must be prefixed with `NEXT_PUBLIC_` as they are used client-side:
 
-- `NEXT_PUBLIC_CHAIN_ID`: Plasma Mainnet Beta chain ID (9745)
-- `NEXT_PUBLIC_RPC`: RPC endpoint for Plasma network
+- `NEXT_PUBLIC_CHAIN_ID`: Monad Mainnet Beta chain ID (9745)
+- `NEXT_PUBLIC_RPC`: RPC endpoint for Monad network
 - `NEXT_PUBLIC_EXPLORER`: Block explorer URL for transaction links
 - `NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID`: WalletConnect project ID for wallet connection
 - Contract addresses for each tool (see below)
@@ -121,7 +121,7 @@ The app can be deployed to any platform that supports Next.js:
 
 1. Click "Connect Wallet" in the top-right corner
 2. Select your preferred wallet
-3. Ensure you're connected to Plasma Mainnet Beta (chain ID: 9745)
+3. Ensure you're connected to Monad Mainnet Beta (chain ID: 9745)
 
 ### Using the Tools
 
@@ -153,7 +153,7 @@ address,amount
 ## Network Information
 
 - **Chain ID**: 9745
-- **Network Name**: Plasma Mainnet Beta
+- **Network Name**: Monad Mainnet Beta
 - **Native Token**: XPL (18 decimals)
 - **RPC URL**: https://rpc.plasma.to
 - **Explorer**: https://plasmascan.to
@@ -212,4 +212,4 @@ For support and questions:
 
 ---
 
-Built with ❤️ for the Plasma ecosystem
+Built with ❤️ for the Monad ecosystem

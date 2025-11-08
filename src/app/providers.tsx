@@ -7,7 +7,7 @@ import { plasmaMainnetBeta } from '@/lib/chains';
 import '@rainbow-me/rainbowkit/styles.css';
 
 const config = getDefaultConfig({
-  appName: 'Plasmatic Tools',
+  appName: 'Nadz Tools',
   projectId: process.env.NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID || 'your-project-id',
   chains: [plasmaMainnetBeta],
   ssr: false,

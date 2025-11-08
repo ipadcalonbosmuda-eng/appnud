@@ -104,7 +104,7 @@ export function Sidebar() {
                         type="button"
                         className={cn(
                           'w-full flex items-center px-2 py-2 text-sm font-medium rounded-md transition-colors',
-                          isSectionActive ? 'bg-[#00FF85] text-black' : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900'
+                          isSectionActive ? 'bg-[#200053] text-white' : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900'
                         )}
                         onClick={(e) => {
                           e.preventDefault();
@@ -116,7 +116,7 @@ export function Sidebar() {
                         <item.icon
                           className={cn(
                             'mr-3 h-5 w-5 flex-shrink-0',
-                            isSectionActive ? 'text-black' : 'text-gray-400'
+                            isSectionActive ? 'text-white' : 'text-gray-400'
                           )}
                         />
                         <span className="flex-1 text-left">{item.name}</span>
@@ -124,7 +124,7 @@ export function Sidebar() {
                           className={cn(
                             'h-4 w-4 transition-transform',
                             isSectionOpen ? 'rotate-180' : 'rotate-0',
-                            isSectionActive ? 'text-black' : 'text-gray-400'
+                            isSectionActive ? 'text-white' : 'text-gray-400'
                           )}
                         />
                       </button>
@@ -138,7 +138,7 @@ export function Sidebar() {
                                 href={child.href}
                                 className={cn(
                                   'group flex items-center px-2 py-2 text-sm font-medium rounded-md transition-colors',
-                                  isActive ? 'bg-[#00FF85] text-black' : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900'
+                                  isActive ? 'bg-[#200053] text-white' : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900'
                                 )}
                                 onClick={() => {
                                   console.log('Clicking link:', child.href);
@@ -166,7 +166,7 @@ export function Sidebar() {
                     className={cn(
                       'group flex items-center px-2 py-2 text-sm font-medium rounded-md transition-colors',
                       isActive
-                        ? 'bg-[#00FF85] text-black'
+                        ? 'bg-[#200053] text-white'
                         : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900'
                     )}
                     onClick={() => {
@@ -177,7 +177,7 @@ export function Sidebar() {
                     <link.icon
                       className={cn(
                         'mr-3 h-5 w-5 flex-shrink-0',
-                        isActive ? 'text-black' : 'text-gray-400 group-hover:text-gray-500'
+                        isActive ? 'text-white' : 'text-gray-400 group-hover:text-gray-500'
                       )}
                     />
                     {link.name}

@@ -18,14 +18,14 @@ export function RequireWallet({ children }: RequireWalletProps) {
       <div className="min-h-screen flex items-center justify-center bg-gray-50">
         <div className="max-w-md w-full bg-white rounded-lg shadow-sm border border-gray-200 p-8 text-center">
           <div className="mb-6">
-            <div className="mx-auto h-12 w-12 rounded-full bg-[#00FF85] flex items-center justify-center mb-4">
+            <div className="mx-auto h-12 w-12 rounded-full bg-[#200053] flex items-center justify-center mb-4">
               <svg className="h-6 w-6 text-black" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
               </svg>
             </div>
             <h2 className="text-2xl font-bold text-gray-900 mb-2">Connect Your Wallet</h2>
             <p className="text-gray-600">
-              Connect your wallet to use tools on Plasma Mainnet Beta.
+              Connect your wallet to use tools on Monad Mainnet Beta.
             </p>
           </div>
           <div className="flex justify-center">
@@ -48,13 +48,13 @@ export function RequireWallet({ children }: RequireWalletProps) {
             </div>
             <h2 className="text-2xl font-bold text-gray-900 mb-2">Wrong Network</h2>
             <p className="text-gray-600 mb-4">
-              Please switch to Plasma Mainnet Beta to use these tools.
+              Please switch to Monad Mainnet Beta to use these tools.
             </p>
             <button
               onClick={() => switchChain({ chainId: plasmaMainnetBeta.id })}
               className="btn-primary w-full"
             >
-              Switch to Plasma Mainnet Beta
+              Switch to Monad Mainnet Beta
             </button>
           </div>
         </div>

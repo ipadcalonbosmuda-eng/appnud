@@ -482,17 +482,17 @@ export default function MultiSendPage() {
                 </div>
                 <div className={`border rounded-lg p-4 ${
                   process.env.NEXT_PUBLIC_MULTISEND 
-                    ? 'bg-green-50 border-green-200' 
+                    ? 'bg-[#f0ebf5] border-[#200053]' 
                     : 'bg-blue-50 border-blue-200'
                 }`}>
                   <p className={`text-sm ${
                     process.env.NEXT_PUBLIC_MULTISEND 
-                      ? 'text-green-700' 
+                      ? 'text-[#200053]' 
                       : 'text-blue-700'
                   }`}>
                     {process.env.NEXT_PUBLIC_MULTISEND 
                       ? 'You can send tokens to multiple recipients in a single transaction.'
-                      : 'Multi-send requires a deployed multi-send contract on Plasma Mainnet Beta. Please contact support for contract deployment.'
+                      : 'Multi-send requires a deployed multi-send contract on Monad Mainnet Beta. Please contact support for contract deployment.'
                     }
                   </p>
                 </div>

@@ -148,7 +148,7 @@ export default function CreateTokenPage() {
           <div className="mb-8">
             <h1 className="text-3xl font-bold text-gray-900 mb-2">Create Token</h1>
             <p className="text-gray-600">
-              Deploy a new ERC-20 token on Plasma Mainnet Beta with custom parameters.
+              Deploy a new ERC-20 token on Monad Mainnet Beta with custom parameters.
             </p>
           </div>
 
@@ -212,16 +212,16 @@ export default function CreateTokenPage() {
                 </form>
 
                 {isSuccess && hash && (
-                  <div className="mt-8 p-4 bg-green-50 border border-green-200 rounded-lg">
-                    <h3 className="text-lg font-semibold text-green-800 mb-2">Token Created Successfully!</h3>
-                    <p className="text-green-700 mb-4">
+                  <div className="mt-8 p-4 bg-[#f0ebf5] border border-[#200053] rounded-lg">
+                    <h3 className="text-lg font-semibold text-[#200053] mb-2">Token Created Successfully!</h3>
+                    <p className="text-[#200053] mb-4">
                       Your token has been deployed to the blockchain.
                     </p>
                     <a
                       href={explorerUrl('', hash)}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center text-green-600 hover:text-green-800 font-medium"
+                      className="inline-flex items-center text-[#200053] hover:text-[#180042] font-medium"
                     >
                       View Transaction on Explorer
                       <svg className="ml-1 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">

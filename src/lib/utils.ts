@@ -21,7 +21,7 @@ export function explorerUrl(address: string, txHash?: string): string {
 // Helper: format chain config for viem/wagmi if needed elsewhere
 export const PLASMA_CHAIN = {
   id: 9745,
-  name: 'Plasma Mainnet Beta',
+  name: 'Monad Mainnet Beta',
   rpcUrl: 'https://rpc.plasma.to',
   explorer: 'https://plasmascan.to',
 };

@@ -162,8 +162,8 @@ export default function MyLockPage() {
           </div>
 
           {txHash && (
-            <div className="mt-6 p-4 bg-green-50 border border-green-200 rounded-lg">
-              <a href={explorerUrl('', txHash)} target="_blank" rel="noopener noreferrer" className="text-green-700 underline">View transaction on explorer</a>
+            <div className="mt-6 p-4 bg-[#f0ebf5] border border-[#200053] rounded-lg">
+              <a href={explorerUrl('', txHash)} target="_blank" rel="noopener noreferrer" className="text-[#200053] underline">View transaction on explorer</a>
             </div>
           )}
         </div>

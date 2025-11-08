@@ -10,11 +10,11 @@ export function NetworkBadge() {
   return (
     <div className={`px-3 py-1 rounded-full text-sm font-medium ${
       isCorrectChain 
-        ? 'bg-green-100 text-green-800 border border-green-200' 
+        ? 'bg-[#f0ebf5] text-[#200053] border border-[#200053]' 
         : 'bg-red-100 text-red-800 border border-red-200'
     }`}>
       {isCorrectChain ? (
-        `Plasma Mainnet Beta • ${plasmaMainnetBeta.id}`
+        `Monad Mainnet Beta • ${plasmaMainnetBeta.id}`
       ) : (
         'Wrong Network'
       )}

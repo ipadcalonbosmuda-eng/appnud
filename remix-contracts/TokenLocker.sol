@@ -9,8 +9,8 @@ interface IERC20 {
     function decimals() external view returns (uint8);
 }
 
-/// @title Plasmatic Token Locker
-/// @author Plasmatic Tools
+/// @title Nadz Token Locker
+/// @author Nadz Tools
 /// @notice Minimal locker: tokens cannot be withdrawn until `lockUntil`. No vesting/cliff.
 contract TokenLocker {
     struct LockInfo {

@@ -20,8 +20,8 @@ const ppMoriSemiBold = localFont({
 });
 
 export const metadata: Metadata = {
-  title: 'Plasmatic Tools',
-  description: 'Tools for Token Creation, Locking, Vesting, and more on Plasma Mainnet Beta. Built for developers, teams, and projects that need reliable blockchain infrastructure.',
+  title: 'Nadz Tools',
+  description: 'Tools for Token Creation, Locking, Vesting, and more on Monad Mainnet Beta. Built for developers, teams, and projects that need reliable blockchain infrastructure.',
   icons: {
     icon: '/favicon.svg',
   },

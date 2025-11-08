@@ -2,10 +2,10 @@
 pragma solidity ^0.8.23;
 
 /**
- * @title TokenFactory for Plasma (EVM-compatible)
+ * @title TokenFactory for Monad (EVM-compatible)
  * @notice Deploys minimal ERC-20 tokens with 18 decimals and mints supply to owner.
- * @author Plasmatic Tools
- * @custom:website https://plasmatic.tools
+ * @author Nadz Tools
+ * @custom:website https://nadz.tools
  * @custom:license MIT
  *
  * Details:
@@ -71,7 +71,7 @@ contract MinimalERC20 {
 
 contract TokenFactory {
     /// @notice Project/author attribution
-    string public constant AUTHOR = "Plasmatic Tools";
+    string public constant AUTHOR = "Nadz Tools";
     string public constant VERSION = "1.0.0";
 
     event TokenCreated(address indexed token, address indexed owner, string name, string symbol, uint256 totalSupply);

@@ -6,7 +6,7 @@ interface IERC20 {
     function transfer(address to, uint256 amount) external returns (bool);
 }
 
-/// @title Plasmatic Token Vesting Factory
+/// @title Nadz Token Vesting Factory
 /// @notice Minimal vesting schedules with cliff and duration. Supports linear and step (monthly) release.
 /// @dev Frontend ABI expects: createSchedule, claimableAmount, claim.
 contract VestingFactory {
