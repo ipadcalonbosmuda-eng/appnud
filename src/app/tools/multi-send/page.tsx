@@ -452,12 +452,12 @@ export default function MultiSendPage() {
             {/* Right: Summary Panel */}
             <div className="lg:col-span-4">
               <div className="card p-6 lg:sticky lg:top-24 space-y-4">
-                <h3 className="text-lg font-semibold text-gray-900">Summary</h3>
+                <h3 className="text-lg font-semibold text-white">Summary</h3>
                 
                 {/* Fee Information */}
                 <div className="bg-black/40 backdrop-blur-sm border border-[#200053]/30 rounded-lg p-4">
-                  <h4 className="font-medium text-blue-900 mb-2">Multi-Send Fee</h4>
-                  <p className="text-sm text-blue-700">
+                  <h4 className="font-medium text-white mb-2">Multi-Send Fee</h4>
+                  <p className="text-sm text-gray-300">
                     Fee {feeAmount ? formatUnits(feeAmount as bigint, 18) : '1'} XPL will be charged for each multi-send operation.
                   </p>
                 </div>
