@@ -80,7 +80,7 @@ export function Sidebar() {
     <>
       {/* Mobile menu button */}
       <button
-        className="lg:hidden fixed top-4 right-4 z-50 p-2 rounded-md bg-white border border-gray-200 shadow-sm"
+        className="lg:hidden fixed top-4 right-4 z-50 p-2 rounded-md bg-black/60 backdrop-blur-md border border-[#200053]/30 shadow-sm"
         onClick={() => setIsOpen(!isOpen)}
       >
         {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
@@ -88,7 +88,7 @@ export function Sidebar() {
 
       {/* Sidebar */}
       <div className={cn(
-        "fixed top-16 left-0 z-[9999] pointer-events-auto w-64 h-[calc(100vh-4rem)] bg-white border-r border-gray-200 transform transition-transform duration-200 ease-in-out lg:translate-x-0 lg:static lg:inset-0 lg:fixed lg:top-16",
+        "fixed top-16 left-0 z-[9999] pointer-events-auto w-64 h-[calc(100vh-4rem)] bg-black/60 backdrop-blur-md border-r border-[#200053]/30 transform transition-transform duration-200 ease-in-out lg:translate-x-0 lg:static lg:inset-0 lg:fixed lg:top-16",
         isOpen ? "translate-x-0" : "-translate-x-full"
       )}>
         <div className="flex flex-col h-full">
@@ -104,7 +104,7 @@ export function Sidebar() {
                         type="button"
                         className={cn(
                           'w-full flex items-center px-2 py-2 text-sm font-medium rounded-md transition-colors',
-                          isSectionActive ? 'bg-[#200053] text-white' : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900'
+                          isSectionActive ? 'bg-[#200053] text-white' : 'text-gray-300 hover:bg-black/40 hover:text-white'
                         )}
                         onClick={(e) => {
                           e.preventDefault();
@@ -138,7 +138,7 @@ export function Sidebar() {
                                 href={child.href}
                                 className={cn(
                                   'group flex items-center px-2 py-2 text-sm font-medium rounded-md transition-colors',
-                                  isActive ? 'bg-[#200053] text-white' : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900'
+                                  isActive ? 'bg-[#200053] text-white' : 'text-gray-300 hover:bg-black/40 hover:text-white'
                                 )}
                                 onClick={() => {
                                   console.log('Clicking link:', child.href);
@@ -167,7 +167,7 @@ export function Sidebar() {
                       'group flex items-center px-2 py-2 text-sm font-medium rounded-md transition-colors',
                       isActive
                         ? 'bg-[#200053] text-white'
-                        : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900'
+                        : 'text-gray-300 hover:bg-black/40 hover:text-white'
                     )}
                     onClick={() => {
                       console.log('Clicking main link:', link.href);

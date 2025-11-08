@@ -44,7 +44,7 @@ export function Toast({ id, type, title, description, duration = 5000, onClose }
   };
 
   const colors = {
-    success: 'bg-[#f0ebf5] border-[#200053] text-[#200053]',
+    success: 'bg-black/60 backdrop-blur-sm border-[#8800D1] text-[#8800D1]',
     error: 'bg-red-50 border-red-200 text-red-800',
     info: 'bg-blue-50 border-blue-200 text-blue-800',
   };
@@ -54,7 +54,7 @@ export function Toast({ id, type, title, description, duration = 5000, onClose }
   return (
     <div
       className={cn(
-        'relative w-full bg-white border rounded-lg shadow-lg transform transition-all duration-300',
+        'relative w-full bg-black/60 backdrop-blur-sm border border-[#200053]/30 rounded-lg shadow-lg transform transition-all duration-300',
         isVisible ? 'translate-x-0 opacity-100' : 'translate-x-full opacity-0',
         colors[type]
       )}

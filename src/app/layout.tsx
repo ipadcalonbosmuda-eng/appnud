@@ -36,7 +36,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${ppMoriRegular.variable} ${ppMoriSemiBold.variable}`}>
         <Providers>
-          <div className="min-h-screen bg-gray-50">
+          <div className="min-h-screen">
             <Header />
             <div className="flex relative">
               <Sidebar />
