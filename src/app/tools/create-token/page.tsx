@@ -237,29 +237,29 @@ export default function CreateTokenPage() {
             <div className="lg:col-span-4">
               <div className="card p-6 lg:sticky lg:top-24 space-y-6">
                 {/* Fee Information */}
-                <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
-                  <h4 className="font-medium text-blue-900 mb-2">Token Creation Fee</h4>
-                  <p className="text-sm text-blue-700">
+                <div className="bg-black/40 backdrop-blur-sm border border-[#200053]/30 rounded-lg p-4">
+                  <h4 className="font-medium text-white mb-2">Token Creation Fee</h4>
+                  <p className="text-sm text-gray-300">
                     Fee {feeAmount ? formatUnits(feeAmount as bigint, 18) : '1'} XPL will be charged for token creation.
                   </p>
                 </div>
 
                 <div>
-                  <h3 className="text-lg font-semibold text-gray-900 mb-2">Preview</h3>
+                  <h3 className="text-lg font-semibold text-white mb-2">Preview</h3>
                   <div className="bg-black/40 backdrop-blur-sm border border-[#200053]/30 rounded-lg p-4 space-y-2">
-                    <p className="text-sm text-gray-600">Name</p>
-                    <p className="font-semibold text-gray-900">{watch('name') || '—'}</p>
-                    <p className="text-sm text-gray-600 mt-3">Symbol</p>
-                    <p className="font-semibold text-gray-900">{watch('symbol') || '—'}</p>
-                    <p className="text-sm text-gray-600 mt-3">Total Supply</p>
-                    <p className="font-semibold text-gray-900">{watch('totalSupply') || '—'}</p>
-                    <p className="text-sm text-gray-600 mt-3">Owner</p>
-                    <p className="font-mono text-gray-900 break-all">{watch('owner') || '—'}</p>
+                    <p className="text-sm text-gray-300">Name</p>
+                    <p className="font-semibold text-white">{watch('name') || '—'}</p>
+                    <p className="text-sm text-gray-300 mt-3">Symbol</p>
+                    <p className="font-semibold text-white">{watch('symbol') || '—'}</p>
+                    <p className="text-sm text-gray-300 mt-3">Total Supply</p>
+                    <p className="font-semibold text-white">{watch('totalSupply') || '—'}</p>
+                    <p className="text-sm text-gray-300 mt-3">Owner</p>
+                    <p className="font-mono text-white break-all">{watch('owner') || '—'}</p>
                   </div>
                 </div>
                 <div>
-                  <h3 className="text-lg font-semibold text-gray-900 mb-2">Guidelines</h3>
-                  <ul className="text-sm text-gray-600 list-disc pl-5 space-y-1">
+                  <h3 className="text-lg font-semibold text-white mb-2">Guidelines</h3>
+                  <ul className="text-sm text-gray-300 list-disc pl-5 space-y-1">
                     <li>Symbol should be 2–6 characters; uppercase is recommended.</li>
                     <li>Total Supply is the initial number of tokens to mint.</li>
                     <li>Owner Address will become the token contract owner.</li>

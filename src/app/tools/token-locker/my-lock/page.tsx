@@ -98,32 +98,32 @@ export default function MyLockPage() {
       <div className="min-h-screen py-8">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-8">
-            <h1 className="text-3xl font-bold text-gray-900 mb-2">My Lock</h1>
-            <p className="text-gray-600">Manage and withdraw your unlocked tokens.</p>
+            <h1 className="text-3xl font-bold text-white mb-2">My Lock</h1>
+            <p className="text-gray-300">Manage and withdraw your unlocked tokens.</p>
           </div>
 
           <div className="card p-6 overflow-x-auto">
             {isLoading ? (
-              <p className="text-gray-600">Loading…</p>
+              <p className="text-gray-300">Loading…</p>
             ) : rows.length === 0 ? (
-              <p className="text-gray-600">No active locks available.</p>
+              <p className="text-gray-300">No active locks available.</p>
             ) : (
               <>
                 {/* Summary */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-                  <div className="rounded-lg border border-gray-200 p-4 bg-white">
-                    <p className="text-xs text-gray-500">Total Locks</p>
-                    <p className="text-2xl font-semibold text-gray-900">{totalLocksCount}</p>
+                  <div className="rounded-lg border border-[#200053]/30 p-4 bg-black/40 backdrop-blur-sm">
+                    <p className="text-xs text-gray-400">Total Locks</p>
+                    <p className="text-2xl font-semibold text-white">{totalLocksCount}</p>
                   </div>
-                  <div className="rounded-lg border border-gray-200 p-4 bg-white">
-                    <p className="text-xs text-gray-500">Total Unlock</p>
-                    <p className="text-2xl font-semibold text-gray-900">{totalUnlockCount}</p>
+                  <div className="rounded-lg border border-[#200053]/30 p-4 bg-black/40 backdrop-blur-sm">
+                    <p className="text-xs text-gray-400">Total Unlock</p>
+                    <p className="text-2xl font-semibold text-white">{totalUnlockCount}</p>
                   </div>
                 </div>
 
-                <table className="min-w-full text-sm text-gray-900">
+                <table className="min-w-full text-sm text-white">
                   <thead>
-                    <tr className="text-left text-gray-700">
+                    <tr className="text-left text-gray-300">
                       <th className="py-2 pr-4">Token</th>
                       <th className="py-2 pr-4">Amount</th>
                       <th className="py-2 pr-4">Unlock Time</th>
@@ -132,12 +132,12 @@ export default function MyLockPage() {
                   </thead>
                   <tbody>
                     {rows.map((row, idx) => (
-                      <tr key={row?.lockId ? String(row.lockId) : `row-${idx}`} className="border-t border-gray-200 hover:bg-gray-50">
+                      <tr key={row?.lockId ? String(row.lockId) : `row-${idx}`} className="border-t border-[#200053]/30 hover:bg-black/20">
                         <td className="py-3 pr-4 font-mono break-all">
                           {row?.token || '-'}
                           <button
                             onClick={() => navigator.clipboard.writeText(row.token)}
-                            className="ml-2 text-xs text-gray-500 hover:text-gray-700 underline"
+                            className="ml-2 text-xs text-gray-400 hover:text-gray-200 underline"
                           >
                             Copy
                           </button>

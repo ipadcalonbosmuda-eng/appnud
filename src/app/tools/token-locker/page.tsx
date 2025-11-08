@@ -302,8 +302,8 @@ export default function TokenLockerPage() {
       <div className="min-h-screen py-8">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-8">
-            <h1 className="text-3xl font-bold text-gray-900 mb-2">Create Locks</h1>
-            <p className="text-gray-600">Lock your tokens until a specified unlock date.</p>
+            <h1 className="text-3xl font-bold text-white mb-2">Create Locks</h1>
+            <p className="text-gray-300">Lock your tokens until a specified unlock date.</p>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
@@ -399,18 +399,18 @@ export default function TokenLockerPage() {
             {/* Right: Info Panel */}
             <div className="lg:col-span-4">
               <div className="card p-6 lg:sticky lg:top-24 space-y-4">
-                <h3 className="text-lg font-semibold text-gray-900">Lock Information</h3>
+                <h3 className="text-lg font-semibold text-white">Lock Information</h3>
                 
                 {/* Fee Information */}
-                <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
-                  <h4 className="font-medium text-blue-900 mb-2">Locking Fee</h4>
-                  <p className="text-sm text-blue-700">
+                <div className="bg-black/40 backdrop-blur-sm border border-[#200053]/30 rounded-lg p-4">
+                  <h4 className="font-medium text-white mb-2">Locking Fee</h4>
+                  <p className="text-sm text-blue-300">
                     Fee {feeAmount ? formatUnits(feeAmount as bigint, 18) : '1'} XPL will be charged for each lock operation.
                   </p>
                 </div>
 
-                <h3 className="text-lg font-semibold text-gray-900">Tips</h3>
-                <ul className="text-sm text-gray-600 list-disc pl-5 space-y-1">
+                <h3 className="text-lg font-semibold text-white">Tips</h3>
+                <ul className="text-sm text-gray-300 list-disc pl-5 space-y-1">
                   <li>Ensure your token supports `approve` for the locker.</li>
                   <li>Use a future date for `Lock Until`.</li>
                   <li>Make sure you have enough XPL for the locking fee.</li>

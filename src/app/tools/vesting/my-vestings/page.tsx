@@ -159,9 +159,9 @@ export default function MyVestingsPage() {
 
   return (
     <div className="max-w-6xl mx-auto p-8 relative z-0 pointer-events-auto">
-      <h1 className="text-2xl font-bold mb-4">My Vestings</h1>
+      <h1 className="text-2xl font-bold text-white mb-4">My Vestings</h1>
       {schedules.length === 0 ? (
-        <p className="text-gray-600">No vesting schedules found.</p>
+        <p className="text-gray-300">No vesting schedules found.</p>
       ) : (
         <div className="space-y-3">
           {schedules.map(({ id, s }) => {
@@ -171,7 +171,7 @@ export default function MyVestingsPage() {
             return (
               <div key={id.toString()} className="border rounded-lg p-4 flex items-center justify-between">
                 <div>
-                  <div className="text-sm text-gray-600">#{id.toString()}</div>
+                  <div className="text-sm text-gray-300">#{id.toString()}</div>
                   <div className="font-medium">Token: {s.token}</div>
                   <div className="text-sm">Total: {total}</div>
                   <div className="text-sm">Released: {released}</div>

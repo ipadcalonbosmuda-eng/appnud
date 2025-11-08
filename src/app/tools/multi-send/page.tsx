@@ -310,8 +310,8 @@ export default function MultiSendPage() {
       <div className="min-h-screen py-8">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-8">
-            <h1 className="text-3xl font-bold text-gray-900 mb-2">Multi-Send</h1>
-            <p className="text-gray-600">
+            <h1 className="text-3xl font-bold text-white mb-2">Multi-Send</h1>
+            <p className="text-gray-300">
               Send tokens to multiple addresses efficiently with a single transaction.
             </p>
           </div>
@@ -324,10 +324,10 @@ export default function MultiSendPage() {
                 <form onSubmit={handleSubmit(onSubmit)} className="space-y-8">
                   {/* Token Selection */}
                   <div className="space-y-4">
-                    <h3 className="text-lg font-semibold text-gray-900">Token Selection</h3>
+                    <h3 className="text-lg font-semibold text-white">Token Selection</h3>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-2">
+                        <label className="block text-sm font-medium text-gray-300 mb-2">
                           Token Type
                         </label>
                         <select
@@ -353,7 +353,7 @@ export default function MultiSendPage() {
 
                   {/* File Upload Section */}
                   <div className="space-y-4">
-                    <h3 className="text-lg font-semibold text-gray-900">Upload Recipients</h3>
+                      <h3 className="text-lg font-semibold text-white">Upload Recipients</h3>
                     <FileDrop
                       onFileSelect={handleFileSelect}
                       acceptedTypes={['.csv', '.json']}
@@ -367,7 +367,7 @@ export default function MultiSendPage() {
                   {/* Manual Entry Section */}
                   <div className="space-y-4">
                     <div className="flex items-center justify-between">
-                      <h3 className="text-lg font-semibold text-gray-900">Manual Entry</h3>
+                      <h3 className="text-lg font-semibold text-white">Manual Entry</h3>
                       <button
                         type="button"
                         onClick={() => append({ address: '', amount: '' })}
@@ -455,7 +455,7 @@ export default function MultiSendPage() {
                 <h3 className="text-lg font-semibold text-gray-900">Summary</h3>
                 
                 {/* Fee Information */}
-                <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+                <div className="bg-black/40 backdrop-blur-sm border border-[#200053]/30 rounded-lg p-4">
                   <h4 className="font-medium text-blue-900 mb-2">Multi-Send Fee</h4>
                   <p className="text-sm text-blue-700">
                     Fee {feeAmount ? formatUnits(feeAmount as bigint, 18) : '1'} XPL will be charged for each multi-send operation.
@@ -463,18 +463,18 @@ export default function MultiSendPage() {
                 </div>
 
                 <div className="bg-black/40 backdrop-blur-sm border border-[#200053]/30 rounded-lg p-4">
-                  <p className="text-sm text-gray-600">Token Type</p>
-                  <p className="text-lg font-bold text-gray-900">
+                  <p className="text-sm text-gray-300">Token Type</p>
+                  <p className="text-lg font-bold text-white">
                     {watch('tokenType') === 'native' ? 'Native (XPL)' : 'Token'}
                   </p>
-                  <p className="text-sm text-gray-600 mt-4">Recipients</p>
-                  <p className="text-2xl font-bold text-gray-900">{recipients.length}</p>
-                  <p className="text-sm text-gray-600 mt-4">Estimated Total</p>
-                  <p className="text-2xl font-bold text-gray-900">{totalAmount.toLocaleString()} tokens</p>
+                  <p className="text-sm text-gray-300 mt-4">Recipients</p>
+                  <p className="text-2xl font-bold text-white">{recipients.length}</p>
+                  <p className="text-sm text-gray-300 mt-4">Estimated Total</p>
+                  <p className="text-2xl font-bold text-white">{totalAmount.toLocaleString()} tokens</p>
                   {watch('tokenType') === 'native' && (
                     <>
-                      <p className="text-sm text-gray-600 mt-4">Total XPL Required</p>
-                      <p className="text-lg font-bold text-gray-900">
+                      <p className="text-sm text-gray-300 mt-4">Total XPL Required</p>
+                      <p className="text-lg font-bold text-white">
                         {(totalAmount + (feeAmount ? Number(formatUnits(feeAmount as bigint, 18)) : 1)).toLocaleString()} XPL
                       </p>
                     </>
@@ -483,12 +483,12 @@ export default function MultiSendPage() {
                 <div className={`border rounded-lg p-4 ${
                   process.env.NEXT_PUBLIC_MULTISEND 
                     ? 'bg-[#f0ebf5] border-[#200053]' 
-                    : 'bg-blue-50 border-blue-200'
+                    : 'bg-black/40 backdrop-blur-sm border border-[#200053]/30'
                 }`}>
                   <p className={`text-sm ${
                     process.env.NEXT_PUBLIC_MULTISEND 
-                      ? 'text-[#200053]' 
-                      : 'text-blue-700'
+                      ? 'text-[#8800D1]' 
+                      : 'text-blue-300'
                   }`}>
                     {process.env.NEXT_PUBLIC_MULTISEND 
                       ? 'You can send tokens to multiple recipients in a single transaction.'
@@ -496,7 +496,7 @@ export default function MultiSendPage() {
                     }
                   </p>
                 </div>
-                <div className="text-sm text-gray-600">
+                <div className="text-sm text-gray-300">
                   Import supports CSV and JSON. Ensure amounts are in token units.
                   <br />
                   <br />
