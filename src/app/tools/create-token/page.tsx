@@ -98,7 +98,7 @@ export default function CreateTokenPage() {
         abi: tokenFactoryAbi,
         functionName: 'createToken',
         args: [data.name, data.symbol, totalSupplyWithDecimals, data.owner as `0x${string}`],
-        value: (feeAmount as bigint) ?? parseEther('1'), // Fee for token creation
+        value: (feeAmount as bigint) ?? parseEther('50'), // Fee for token creation
       });
 
       {
@@ -240,7 +240,7 @@ export default function CreateTokenPage() {
                 <div className="bg-[#1a0a2e] backdrop-blur-sm border-2 border-[#6500A9] rounded-lg p-4">
                   <h4 className="font-medium text-white mb-2">Token Creation Fee</h4>
                   <p className="text-sm text-gray-300">
-                    Fee {feeAmount ? formatUnits(feeAmount as bigint, 18) : '1'} XPL will be charged for token creation.
+                    Fee {feeAmount ? formatUnits(feeAmount as bigint, 18) : '50'} MON will be charged for token creation.
                   </p>
                 </div>
 
@@ -263,7 +263,7 @@ export default function CreateTokenPage() {
                     <li>Symbol should be 2–6 characters; uppercase is recommended.</li>
                     <li>Total Supply is the initial number of tokens to mint.</li>
                     <li>Owner Address will become the token contract owner.</li>
-                    <li>Make sure you have enough XPL for the creation fee.</li>
+                    <li>Make sure you have enough MON for the creation fee.</li>
                   </ul>
                 </div>
               </div>

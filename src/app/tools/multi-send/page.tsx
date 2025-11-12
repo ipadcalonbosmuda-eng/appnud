@@ -167,7 +167,7 @@ export default function MultiSendPage() {
       const amounts = data.recipients.map(r => convertToBigInt(r.amount, 18));
 
       if (data.tokenType === 'native') {
-        // Native token (XPL) sending using multi-send contract
+        // Native token (MON) sending using multi-send contract
         const multiSendAddress = process.env.NEXT_PUBLIC_MULTISEND;
         
         if (!multiSendAddress) {
@@ -182,7 +182,7 @@ export default function MultiSendPage() {
         addToast({
           type: 'info',
           title: 'Starting Multi-Send',
-          description: `Sending XPL to ${addresses.length} recipients using multi-send contract...`,
+          description: `Sending MON to ${addresses.length} recipients using multi-send contract...`,
         });
 
         try {
@@ -201,7 +201,7 @@ export default function MultiSendPage() {
               abi: multiSendAbi,
               functionName: 'multiSendNative',
               args: [addresses, amounts],
-              value: amounts.reduce((sum, amount) => sum + amount, BigInt(0)) + ((feeAmount as bigint) ?? parseEther('1')), // Total amount + fee
+              value: amounts.reduce((sum, amount) => sum + amount, BigInt(0)) + ((feeAmount as bigint) ?? parseEther('50')), // Total amount + fee
             });
           } catch (firstError) {
             console.log('multiSendNative failed, trying multiSend:', firstError);
@@ -210,7 +210,7 @@ export default function MultiSendPage() {
               abi: multiSendAbi,
               functionName: 'multiSend',
               args: [addresses, amounts],
-              value: amounts.reduce((sum, amount) => sum + amount, BigInt(0)) + ((feeAmount as bigint) ?? parseEther('1')), // Total amount + fee
+              value: amounts.reduce((sum, amount) => sum + amount, BigInt(0)) + ((feeAmount as bigint) ?? parseEther('50')), // Total amount + fee
             });
           }
 
@@ -269,7 +269,7 @@ export default function MultiSendPage() {
             abi: multiSendAbi,
             functionName: 'multiSendToken',
             args: [data.tokenAddress as `0x${string}`, addresses, tokenAmounts],
-            value: (feeAmount as bigint) ?? parseEther('1'), // Fee for token multi-send
+            value: (feeAmount as bigint) ?? parseEther('50'), // Fee for token multi-send
           });
 
           addToast({
@@ -334,7 +334,7 @@ export default function MultiSendPage() {
                           {...register('tokenType')}
                           className="w-full h-12 px-4 rounded-md bg-gray-100 text-black border-2 border-gray-300 hover:border-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-300 focus:border-gray-500 transition-colors"
                         >
-                          <option value="native">Native Token (XPL)</option>
+                          <option value="native">Native Token (MON)</option>
                           <option value="prc20">Token</option>
                         </select>
                       </div>
@@ -458,14 +458,14 @@ export default function MultiSendPage() {
                 <div className="bg-black/40 backdrop-blur-sm border border-[#200053]/30 rounded-lg p-4">
                   <h4 className="font-medium text-white mb-2">Multi-Send Fee</h4>
                   <p className="text-sm text-gray-300">
-                    Fee {feeAmount ? formatUnits(feeAmount as bigint, 18) : '1'} XPL will be charged for each multi-send operation.
+                    Fee {feeAmount ? formatUnits(feeAmount as bigint, 18) : '50'} MON will be charged for each multi-send operation.
                   </p>
                 </div>
 
                 <div className="bg-black/40 backdrop-blur-sm border border-[#200053]/30 rounded-lg p-4">
                   <p className="text-sm text-gray-300">Token Type</p>
                   <p className="text-lg font-bold text-white">
-                    {watch('tokenType') === 'native' ? 'Native (XPL)' : 'Token'}
+                    {watch('tokenType') === 'native' ? 'Native (MON)' : 'Token'}
                   </p>
                   <p className="text-sm text-gray-300 mt-4">Recipients</p>
                   <p className="text-2xl font-bold text-white">{recipients.length}</p>
@@ -473,9 +473,9 @@ export default function MultiSendPage() {
                   <p className="text-2xl font-bold text-white">{totalAmount.toLocaleString()} tokens</p>
                   {watch('tokenType') === 'native' && (
                     <>
-                      <p className="text-sm text-gray-300 mt-4">Total XPL Required</p>
+                      <p className="text-sm text-gray-300 mt-4">Total MON Required</p>
                       <p className="text-lg font-bold text-white">
-                        {(totalAmount + (feeAmount ? Number(formatUnits(feeAmount as bigint, 18)) : 1)).toLocaleString()} XPL
+                        {(totalAmount + (feeAmount ? Number(formatUnits(feeAmount as bigint, 18)) : 50)).toLocaleString()} MON
                       </p>
                     </>
                   )}
@@ -500,7 +500,7 @@ export default function MultiSendPage() {
                   Import supports CSV and JSON. Ensure amounts are in token units.
                   <br />
                   <br />
-                  <strong>Note:</strong> Make sure you have enough XPL for the multi-send fee.
+                  <strong>Note:</strong> Make sure you have enough MON for the multi-send fee.
                 </div>
               </div>
             </div>

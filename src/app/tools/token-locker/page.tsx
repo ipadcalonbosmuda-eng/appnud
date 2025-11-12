@@ -263,8 +263,8 @@ export default function TokenLockerPage() {
           amountInUnits,
           BigInt(lockUntil),
         ],
-        // Use dynamic fee from contract, fallback to 1 XPL
-        value: (feeAmount as bigint) ?? parseEther('1'),
+        // Use dynamic fee from contract, fallback to 50 MON
+        value: (feeAmount as bigint) ?? parseEther('50'),
       });
     } catch (error) {
       console.error('Error locking token:', error);
@@ -405,7 +405,7 @@ export default function TokenLockerPage() {
                 <div className="bg-black/40 backdrop-blur-sm border border-[#200053]/30 rounded-lg p-4">
                   <h4 className="font-medium text-white mb-2">Locking Fee</h4>
                   <p className="text-sm text-blue-300">
-                    Fee {feeAmount ? formatUnits(feeAmount as bigint, 18) : '1'} XPL will be charged for each lock operation.
+                    Fee {feeAmount ? formatUnits(feeAmount as bigint, 18) : '50'} MON will be charged for each lock operation.
                   </p>
                 </div>
 
@@ -413,7 +413,7 @@ export default function TokenLockerPage() {
                 <ul className="text-sm text-gray-300 list-disc pl-5 space-y-1">
                   <li>Ensure your token supports `approve` for the locker.</li>
                   <li>Use a future date for `Lock Until`.</li>
-                  <li>Make sure you have enough XPL for the locking fee.</li>
+                  <li>Make sure you have enough MON for the locking fee.</li>
                 </ul>
               </div>
             </div>
