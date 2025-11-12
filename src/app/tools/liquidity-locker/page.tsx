@@ -100,26 +100,26 @@ export default function LiquidityLockerPage() {
             </p>
           </div>
 
-          {/* Blur overlay while coming soon */}
-          {isComingSoon && (
-            <>
-              <div className="fixed inset-0 z-50 pointer-events-auto cursor-not-allowed select-none">
-                <div className="absolute inset-0 backdrop-blur-md bg-black/70" />
-                <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 mx-auto max-w-2xl z-20 text-center px-6">
-                  <div className="rounded-lg border-2 border-[#8500FF] bg-[#1a0a2e] backdrop-blur-sm p-4 shadow-sm">
-                    <p className="font-semibold mb-1 text-white">Coming Soon</p>
-                    <p className="text-sm text-gray-300">
-                      Liquidity Locker is not available yet. For now, you can use Token Locker to lock your LP tokens.
-                    </p>
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 relative">
+            {/* Blur overlay while coming soon - only on form area */}
+            {isComingSoon && (
+              <>
+                <div className="absolute inset-0 z-50 pointer-events-auto cursor-not-allowed select-none">
+                  <div className="absolute inset-0 backdrop-blur-md bg-black/70" />
+                  <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 mx-auto max-w-2xl z-20 text-center px-6">
+                    <div className="rounded-lg border-2 border-[#8500FF] bg-[#1a0a2e] backdrop-blur-sm p-4 shadow-sm">
+                      <p className="font-semibold mb-1 text-white">Coming Soon</p>
+                      <p className="text-sm text-gray-300">
+                        Liquidity Locker is not available yet. For now, you can use Token Locker to lock your LP tokens.
+                      </p>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </>
-          )}
+              </>
+            )}
 
-          <div className={`grid grid-cols-1 lg:grid-cols-12 gap-8 ${isComingSoon ? 'blur-sm select-none pointer-events-none user-select-none' : ''}`}>
             {/* Left: Form */}
-            <div className="lg:col-span-8">
+            <div className={`lg:col-span-8 ${isComingSoon ? 'blur-sm select-none pointer-events-none user-select-none' : ''}`}>
               <div className="card p-8">
                 <form onSubmit={handleSubmit(onSubmit)} className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="md:col-span-2">
@@ -202,7 +202,7 @@ export default function LiquidityLockerPage() {
             </div>
 
             {/* Right: Info Panel */}
-            <div className="lg:col-span-4">
+            <div className={`lg:col-span-4 ${isComingSoon ? 'blur-sm select-none pointer-events-none user-select-none' : ''}`}>
               <div className="card p-6 lg:sticky lg:top-24 space-y-4">
                 <h3 className="text-lg font-semibold text-white">Checklist</h3>
                 <ul className="text-sm text-gray-300 list-disc pl-5 space-y-1">
