@@ -22,7 +22,7 @@ type LiquidityLockerForm = z.infer<typeof liquidityLockerSchema>;
 export default function LiquidityLockerPage() {
   const [toasts, setToasts] = useState<ToastProps[]>([]);
   const [isLoading, setIsLoading] = useState(false);
-  const isComingSoon = false; // Toggle: blur UI while feature is not ready
+  const isComingSoon = true; // Toggle: blur UI while feature is not ready
 
   const {
     register,
@@ -109,7 +109,7 @@ export default function LiquidityLockerPage() {
                   <div className="rounded-lg border-2 border-[#8500FF] bg-[#1a0a2e] backdrop-blur-sm p-4 shadow-sm">
                     <p className="font-semibold mb-1 text-white">Coming Soon</p>
                     <p className="text-sm text-gray-300">
-                      Liquidity Locker is not available yet. For now, you can lock your LP tokens using the Token Locker.
+                      Liquidity Locker is not available yet. For now, you can use Token Locker to lock your LP tokens.
                     </p>
                   </div>
                 </div>
