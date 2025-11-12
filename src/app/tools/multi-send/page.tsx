@@ -490,10 +490,7 @@ export default function MultiSendPage() {
                       ? 'text-[#8800D1]' 
                       : 'text-blue-300'
                   }`}>
-                    {process.env.NEXT_PUBLIC_MULTISEND 
-                      ? 'You can send tokens to multiple recipients in a single transaction.'
-                      : ''
-                    }
+                    You can send tokens to multiple recipients in a single transaction.
                   </p>
                 </div>
                 <div className="text-sm text-gray-300">
