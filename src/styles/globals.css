@@ -14,10 +14,6 @@
   --ring: #8500FF;
 }
 
-* {
-  border-color: hsl(var(--border));
-}
-
 body {
   color: hsl(var(--foreground));
   background: #000000;
@@ -28,9 +24,6 @@ body {
 }
 
 @layer base {
-  * {
-    @apply border-border;
-  }
   body {
     @apply bg-background text-foreground;
   }
