@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useAccount, useReadContract, useWriteContract } from 'wagmi';
 import vestingAbi from '@/lib/abis/vestingFactory.json';
 import { formatUnits } from 'viem';
@@ -22,7 +22,7 @@ export default function MyVestingsPage() {
   const { writeContract } = useWriteContract();
   const [decimalsMap, setDecimalsMap] = useState<Record<string, number>>({});
   const [isLoading, setIsLoading] = useState(false);
-  const [isMounted, setIsMounted] = useState(true);
+  const mountedRef = useRef(true);
 
   const { data: ids } = useReadContract({
     address: process.env.NEXT_PUBLIC_VESTING_FACTORY as `0x${string}`,
@@ -33,14 +33,6 @@ export default function MyVestingsPage() {
   });
 
   const scheduleIds = (ids as unknown as bigint[]) ?? [];
-
-  const { data: firstSchedule } = useReadContract({
-    address: process.env.NEXT_PUBLIC_VESTING_FACTORY as `0x${string}`,
-    abi: vestingAbi,
-    functionName: 'schedules',
-    args: scheduleIds.length ? [scheduleIds[0]] : undefined,
-    query: { enabled: scheduleIds.length > 0 },
-  });
 
   // Lazy fetch per schedule (simple version)
   const [schedules, setSchedules] = useState<Array<{ id: bigint; s: Schedule }>>([]);
@@ -56,7 +48,7 @@ export default function MyVestingsPage() {
       const newSchedules: Array<{ id: bigint; s: Schedule }> = [];
       
       for (const id of scheduleIds) {
-        if (!isMounted) break;
+        if (!mountedRef.current) break;
         
         try {
           // Add timeout to prevent hanging
@@ -76,7 +68,7 @@ export default function MyVestingsPage() {
             clearTimeout(timeoutId);
           }
           
-          if (res && isMounted) {
+          if (res && mountedRef.current) {
             newSchedules.push({ id, s: res as Schedule });
           }
         } catch (error) {
@@ -87,7 +79,7 @@ export default function MyVestingsPage() {
         }
       }
       
-      if (isMounted) {
+      if (mountedRef.current) {
         setSchedules(newSchedules);
       }
     })();
@@ -97,7 +89,7 @@ export default function MyVestingsPage() {
         clearTimeout(timeoutId);
       }
     };
-  }, [scheduleIds, isMounted]);
+  }, [scheduleIds]);
 
   // Helper to read decimals per token lazily
   useEffect(() => {
@@ -107,7 +99,7 @@ export default function MyVestingsPage() {
       const newDecimalsMap: Record<string, number> = {};
       
       for (const { s } of schedules) {
-        if (!isMounted) break;
+        if (!mountedRef.current) break;
         
         const key = s.token.toLowerCase();
         if (decimalsMap[key] !== undefined) continue;
@@ -118,26 +110,26 @@ export default function MyVestingsPage() {
             abi: [{ inputs: [], name: 'decimals', outputs: [{ name: '', type: 'uint8' }], stateMutability: 'view', type: 'function' }] as unknown,
             functionName: 'decimals',
           });
-          if (isMounted) {
+          if (mountedRef.current) {
             newDecimalsMap[key] = Number(dec ?? 18);
           }
         } catch {
-          if (isMounted) {
+          if (mountedRef.current) {
             newDecimalsMap[key] = 18;
           }
         }
       }
       
-      if (isMounted && Object.keys(newDecimalsMap).length > 0) {
+      if (mountedRef.current && Object.keys(newDecimalsMap).length > 0) {
         setDecimalsMap((m) => ({ ...m, ...newDecimalsMap }));
       }
     })();
-  }, [schedules.length, decimalsMap, isMounted]);
+  }, [schedules.length, decimalsMap]);
 
   // Cleanup on unmount
   useEffect(() => {
     return () => {
-      setIsMounted(false);
+      mountedRef.current = false;
     };
   }, []);
 
