@@ -73,7 +73,6 @@ export default function MyLiquidityLockPage() {
       } catch {
         // If locksOf doesn't exist, try to get from events or other methods
         // For now, we'll use a placeholder approach
-        console.log('locksOf not available, using alternative method');
       }
 
       const result: LockRow[] = [];

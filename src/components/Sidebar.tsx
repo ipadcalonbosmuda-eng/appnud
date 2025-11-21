@@ -116,7 +116,6 @@ export function Sidebar() {
                         onClick={(e) => {
                           e.preventDefault();
                           e.stopPropagation();
-                          console.log('Toggling section:', item.name);
                           toggleSection(item.name);
                         }}
                       >
@@ -148,7 +147,6 @@ export function Sidebar() {
                                   isActive ? 'bg-[#8500FF] text-white' : 'text-gray-300 hover:bg-black/40 hover:text-white'
                                 )}
                                 onClick={() => {
-                                  console.log('Clicking link:', child.href);
                                   setIsOpen(false);
                                 }}
                               >
@@ -177,7 +175,6 @@ export function Sidebar() {
                         : 'text-gray-300 hover:bg-black/40 hover:text-white'
                     )}
                     onClick={() => {
-                      console.log('Clicking main link:', link.href);
                       setIsOpen(false);
                     }}
                   >

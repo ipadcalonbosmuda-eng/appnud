@@ -186,13 +186,6 @@ export default function MultiSendPage() {
         });
 
         try {
-          console.log('Multi-Send Debug Info:', {
-            contractAddress: multiSendAddress,
-            addresses: addresses,
-            amounts: amounts,
-            totalValue: amounts.reduce((sum, amount) => sum + amount, BigInt(0)).toString()
-          });
-
           // Try multiSendNative first, fallback to multiSend
           let txHash;
           try {
@@ -203,8 +196,7 @@ export default function MultiSendPage() {
               args: [addresses, amounts],
               value: amounts.reduce((sum, amount) => sum + amount, BigInt(0)) + ((feeAmount as bigint) ?? parseEther('50')), // Total amount + fee
             });
-          } catch (firstError) {
-            console.log('multiSendNative failed, trying multiSend:', firstError);
+          } catch {
             txHash = await writeContract({
               address: multiSendAddress as `0x${string}`,
               abi: multiSendAbi,
@@ -213,8 +205,6 @@ export default function MultiSendPage() {
               value: amounts.reduce((sum, amount) => sum + amount, BigInt(0)) + ((feeAmount as bigint) ?? parseEther('50')), // Total amount + fee
             });
           }
-
-          console.log('Transaction Hash:', txHash);
 
           addToast({
             type: 'success',

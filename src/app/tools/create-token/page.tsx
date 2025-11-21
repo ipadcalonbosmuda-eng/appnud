@@ -76,8 +76,6 @@ export default function CreateTokenPage() {
 
     setIsLoading(true);
     try {
-      console.log('🚀 Creating Token:', { name: data.name, symbol: data.symbol });
-
       // Convert total supply to wei using viem's parseUnits (no BigInt literals)
       const totalSupplyWithDecimals = parseUnits(data.totalSupply, 18);
 

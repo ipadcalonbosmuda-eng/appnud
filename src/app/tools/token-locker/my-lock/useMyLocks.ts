@@ -53,7 +53,6 @@ export function useMyLocks() {
             abi,
             functionName: "nextLockId",
           })) as bigint;
-          console.log('[MyLock] nextLockId ->', String(maxId));
           const allIds: bigint[] = [];
           for (let i = BigInt(1); i <= maxId; i = i + BigInt(1)) allIds.push(i);
           lockIds = allIds;
@@ -72,7 +71,6 @@ export function useMyLocks() {
             toBlock: "latest",
           })) as unknown as Array<{ args: { lockId: bigint } }>;
           lockIds = logs.map((l) => l.args.lockId);
-          console.log('[MyLock] logs(owner) ->', lockIds.length);
           if (!lockIds || lockIds.length === 0) {
             const allLogs = (await client.getLogs({
               address: CONTRACT_ADDRESS,
@@ -81,7 +79,6 @@ export function useMyLocks() {
               toBlock: "latest",
             })) as unknown as Array<{ args: { lockId: bigint; owner: `0x${string}` } }>;
             lockIds = allLogs.filter((l) => l.args && String(l.args.owner).toLowerCase() === address.toLowerCase()).map((l) => l.args.lockId);
-            console.log('[MyLock] logs(all) filtered ->', lockIds.length);
           }
         }
 
