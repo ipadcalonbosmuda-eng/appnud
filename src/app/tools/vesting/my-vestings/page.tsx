@@ -6,6 +6,15 @@ import vestingAbi from '@/lib/abis/vestingFactory.json';
 import { formatUnits, type Abi } from 'viem';
 
 const vestingFactoryAbi = vestingAbi as Abi;
+const erc20DecimalsAbi = [
+  {
+    inputs: [],
+    name: 'decimals',
+    outputs: [{ name: '', type: 'uint8' }],
+    stateMutability: 'view',
+    type: 'function',
+  },
+] as const satisfies Abi;
 
 type Schedule = {
   token: `0x${string}`;
@@ -58,7 +67,7 @@ export default function MyVestingsPage() {
   }, [scheduleIds, schedulesData]);
 
   const uniqueTokens = useMemo(() => {
-    const set = new Set<string>();
+    const set = new Set<`0x${string}`>();
     schedules.forEach(({ s }) => {
       set.add(s.token.toLowerCase() as `0x${string}`);
     });
@@ -67,16 +76,8 @@ export default function MyVestingsPage() {
 
   const { data: decimalsData } = useReadContracts({
     contracts: uniqueTokens.map((token) => ({
-      address: token as `0x${string}`,
-      abi: [
-        {
-          inputs: [],
-          name: 'decimals',
-          outputs: [{ name: '', type: 'uint8' }],
-          stateMutability: 'view',
-          type: 'function',
-        },
-      ],
+      address: token,
+      abi: erc20DecimalsAbi,
       functionName: 'decimals',
     })),
     query: {
