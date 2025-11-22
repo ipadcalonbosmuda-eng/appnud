@@ -36,23 +36,7 @@ type VestingForm = z.infer<typeof vestingSchema>;
 export default function VestingPage() {
   const isComingSoon = true;
 
-  if (isComingSoon) {
-    return (
-      <RequireWallet>
-        <div className="min-h-screen flex items-center justify-center px-4 py-16">
-          <div className="card max-w-2xl w-full text-center p-10 space-y-4">
-            <p className="text-sm font-semibold tracking-wider text-white/70 uppercase">Coming Soon</p>
-            <h1 className="text-3xl font-bold text-white">Token Vesting</h1>
-            <p className="text-gray-300">
-              Token vesting is almost ready. We&apos;re finalizing the experience so teams can manage vesting schedules directly from
-              Nadz Tools. Stay tuned—this section will be live shortly.
-            </p>
-          </div>
-        </div>
-      </RequireWallet>
-    );
-  }
-
+  // All hooks must be called before any conditional returns
   const { address } = useAccount();
   const [toasts, setToasts] = useState<ToastProps[]>([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -95,7 +79,7 @@ export default function VestingPage() {
     functionName: 'getClaimableAmount',
     args: createdScheduleId ? [BigInt(createdScheduleId)] : undefined,
     query: {
-      enabled: !!createdScheduleId && !!process.env.NEXT_PUBLIC_VESTING_FACTORY,
+      enabled: !!createdScheduleId && !!process.env.NEXT_PUBLIC_VESTING_FACTORY && !isComingSoon,
     },
   });
 
@@ -109,7 +93,7 @@ export default function VestingPage() {
       { inputs: [], name: 'decimals', outputs: [{ name: '', type: 'uint8' }], stateMutability: 'view', type: 'function' },
     ],
     functionName: 'decimals',
-    query: { enabled: !!vestedTokenAddress },
+    query: { enabled: !!vestedTokenAddress && !isComingSoon },
   });
   const decimals = Number((tokenDecimals as unknown as number) ?? 18);
 
@@ -119,7 +103,7 @@ export default function VestingPage() {
       { inputs: [], name: 'symbol', outputs: [{ name: '', type: 'string' }], stateMutability: 'view', type: 'function' },
     ],
     functionName: 'symbol',
-    query: { enabled: !!vestedTokenAddress },
+    query: { enabled: !!vestedTokenAddress && !isComingSoon },
   });
   const tokenSymbol = (tokenSymbolData as unknown as string) ?? '';
 
@@ -130,7 +114,7 @@ export default function VestingPage() {
       { inputs: [], name: 'name', outputs: [{ name: '', type: 'string' }], stateMutability: 'view', type: 'function' },
     ],
     functionName: 'name',
-    query: { enabled: !!vestedTokenAddress },
+    query: { enabled: !!vestedTokenAddress && !isComingSoon },
   });
   const tokenName = (tokenNameData as unknown as string) ?? '';
 
@@ -141,7 +125,7 @@ export default function VestingPage() {
     ],
     functionName: 'balanceOf',
     args: address && vestedTokenAddress ? [address] : undefined,
-    query: { enabled: !!address && !!vestedTokenAddress },
+    query: { enabled: !!address && !!vestedTokenAddress && !isComingSoon },
   });
   const walletBalance = (walletBalanceData as unknown as bigint) ?? BigInt(0);
   const walletBalanceFormatted = (() => {
@@ -174,7 +158,7 @@ export default function VestingPage() {
 
   const durationUnit = (watch('durationUnit') as 'day'|'week'|'month'|'year');
   const releaseUnit = (watch('unlockUnit') as 'day'|'week'|'month'|'year');
-  const orderMap = { day: 0, week: 1, month: 2, year: 3 } as const;
+  const orderMap = useMemo(() => ({ day: 0, week: 1, month: 2, year: 3 } as const), []);
   const allUnits: Array<'day'|'week'|'month'|'year'> = ['day','week','month','year'];
   const allowedUnlockUnits = allUnits.filter((u) => orderMap[u] <= orderMap[durationUnit]);
   const SECONDS_PER_DAY = 24 * 60 * 60;
@@ -302,7 +286,6 @@ export default function VestingPage() {
       const baseShare = totalUnits / BigInt(count);
       let remainder = totalUnits - baseShare * BigInt(count);
       for (let idx = 0; idx < targets.length; idx++) {
-        const r = targets[idx];
         const extra = remainder > BigInt(0) ? BigInt(1) : BigInt(0);
         const amountEach = baseShare + extra;
         if (remainder > BigInt(0)) remainder -= BigInt(1);
@@ -392,6 +375,24 @@ export default function VestingPage() {
   // Update beneficiary field when wallet connects
   if (address) {
     // This would need to be handled differently in a real implementation
+  }
+
+  // Conditional return after all hooks
+  if (isComingSoon) {
+    return (
+      <RequireWallet>
+        <div className="min-h-screen flex items-center justify-center px-4 py-16">
+          <div className="card max-w-2xl w-full text-center p-10 space-y-4">
+            <p className="text-sm font-semibold tracking-wider text-white/70 uppercase">Coming Soon</p>
+            <h1 className="text-3xl font-bold text-white">Token Vesting</h1>
+            <p className="text-gray-300">
+              Token vesting is almost ready. We&apos;re finalizing the experience so teams can manage vesting schedules directly from
+              Nadz Tools. Stay tuned—this section will be live shortly.
+            </p>
+          </div>
+        </div>
+      </RequireWallet>
+    );
   }
 
   return (

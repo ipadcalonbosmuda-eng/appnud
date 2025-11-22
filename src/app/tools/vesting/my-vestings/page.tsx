@@ -32,23 +32,7 @@ type Schedule = {
 export default function MyVestingsPage() {
   const isComingSoon = true;
 
-  if (isComingSoon) {
-    return (
-      <RequireWallet>
-        <div className="min-h-screen flex items-center justify-center px-4 py-16">
-          <div className="card max-w-2xl w-full text-center p-10 space-y-4">
-            <p className="text-sm font-semibold tracking-wider text-white/70 uppercase">Coming Soon</p>
-            <h1 className="text-3xl font-bold text-white">My Vestings</h1>
-            <p className="text-gray-300">
-              Vesting dashboards will arrive shortly so you can track schedules and claim directly from Nadz Tools.
-              We&apos;re putting on the finishing touches—thanks for your patience!
-            </p>
-          </div>
-        </div>
-      </RequireWallet>
-    );
-  }
-
+  // All hooks must be called before any conditional returns
   const { address } = useAccount();
   const { writeContract } = useWriteContract();
   const [isLoading, setIsLoading] = useState(false);
@@ -58,10 +42,10 @@ export default function MyVestingsPage() {
     abi: vestingFactoryAbi,
     functionName: 'getUserSchedules',
     args: address ? [address] : undefined,
-    query: { enabled: !!address && !!process.env.NEXT_PUBLIC_VESTING_FACTORY },
+    query: { enabled: !!address && !!process.env.NEXT_PUBLIC_VESTING_FACTORY && !isComingSoon },
   });
 
-  const scheduleIds = (ids as unknown as bigint[]) ?? [];
+  const scheduleIds = useMemo(() => (ids as unknown as bigint[]) ?? [], [ids]);
 
   const { data: schedulesData, isLoading: schedulesLoading } = useReadContracts({
     contracts: scheduleIds.map((id) => ({
@@ -71,7 +55,7 @@ export default function MyVestingsPage() {
       args: [id],
     })),
     query: {
-      enabled: scheduleIds.length > 0 && !!process.env.NEXT_PUBLIC_VESTING_FACTORY,
+      enabled: scheduleIds.length > 0 && !!process.env.NEXT_PUBLIC_VESTING_FACTORY && !isComingSoon,
     },
   });
 
@@ -101,7 +85,7 @@ export default function MyVestingsPage() {
       functionName: 'decimals',
     })),
     query: {
-      enabled: uniqueTokens.length > 0,
+      enabled: uniqueTokens.length > 0 && !isComingSoon,
     },
   });
 
@@ -130,6 +114,24 @@ export default function MyVestingsPage() {
       setIsLoading(false);
     }
   };
+
+  // Conditional return after all hooks
+  if (isComingSoon) {
+    return (
+      <RequireWallet>
+        <div className="min-h-screen flex items-center justify-center px-4 py-16">
+          <div className="card max-w-2xl w-full text-center p-10 space-y-4">
+            <p className="text-sm font-semibold tracking-wider text-white/70 uppercase">Coming Soon</p>
+            <h1 className="text-3xl font-bold text-white">My Vestings</h1>
+            <p className="text-gray-300">
+              Vesting dashboards will arrive shortly so you can track schedules and claim directly from Nadz Tools.
+              We&apos;re putting on the finishing touches—thanks for your patience!
+            </p>
+          </div>
+        </div>
+      </RequireWallet>
+    );
+  }
 
   return (
     <div className="max-w-6xl mx-auto p-8 relative z-0 pointer-events-auto">
